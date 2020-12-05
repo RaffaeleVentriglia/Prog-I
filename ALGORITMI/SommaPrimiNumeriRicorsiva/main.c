@@ -10,10 +10,10 @@ int main(){
     return 0;
 }
 
-int somma_ric(int n){
-    if(n == 1){
+int somma_ric(int a){
+    if(a == 1){
         return 1;
     } else {
-        return n + somma_ric(n-1);   //somma i primi n numeri naturali
+        return a + somma_ric(a-1);   //somma i primi n numeri naturali
     }
 }
