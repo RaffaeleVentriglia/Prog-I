@@ -11,7 +11,7 @@ int main(){
 }
 
 int fattoriale_ric(int n){
-    if(n == 1){
+    if(n <= 1){
         return 1;
     } else {
         return n * fattoriale_ric(n-1);
