@@ -34,9 +34,9 @@ int main(){
     Mario_Rossi.libretto[1] = 30;
     
 
-    printf("Questo è il nome: %s", Mario_Rossi.nome);
-    printf("Questo è il cognome: %s", Mario_Rossi.cognome);
-    printf("Questa è l'età:: %int", Mario_Rossi.eta);
-    printf("Questo è il nome: %int", Mario_Rossi.libretto[0]);
+    printf("Questo è il nome: %s\n", Mario_Rossi.nome);
+    printf("Questo è il cognome: %s\n", Mario_Rossi.cognome);
+    printf("Questa è l'età: %d\n", Mario_Rossi.eta);
+    printf("Questo è il risultato del primo esame: %d\n", Mario_Rossi.libretto[0]);
     return 0;
 }
