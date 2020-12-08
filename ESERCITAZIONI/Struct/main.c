@@ -32,11 +32,13 @@ int main(){
     Mario_Rossi.eta = 19;
     Mario_Rossi.libretto[0] = 28;
     Mario_Rossi.libretto[1] = 30;
-    
+
 
     printf("Questo è il nome: %s\n", Mario_Rossi.nome);
     printf("Questo è il cognome: %s\n", Mario_Rossi.cognome);
     printf("Questa è l'età: %d\n", Mario_Rossi.eta);
     printf("Questo è il risultato del primo esame: %d\n", Mario_Rossi.libretto[0]);
     return 0;
+
+    //TODO: Finisci la lezione sulle struct
 }
