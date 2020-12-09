@@ -1,3 +1,5 @@
+//conta le lettere presenti in una stringa
+
 #include <stdio.h>
 
 int contaLettere(char[]);

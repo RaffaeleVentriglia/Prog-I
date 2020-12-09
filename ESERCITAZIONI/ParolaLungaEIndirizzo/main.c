@@ -3,7 +3,6 @@
   output la parola di lunghezza massima contenuta nel testo e la posizione di inizio
   della parola nella stringa. Nel testo le parole sono separate da un unico spazio.*/
 
-
 #include <stdio.h>
 #include <string.h>
 

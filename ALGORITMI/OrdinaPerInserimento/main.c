@@ -1,3 +1,5 @@
+//algoritmo di ordinamento per inserimento
+
 #include <stdio.h>
 
 void ord_inser(char [], int);

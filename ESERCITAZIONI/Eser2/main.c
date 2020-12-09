@@ -1,3 +1,5 @@
+//fusione di due array e calcolo della media dell'array finale
+
 #include <stdio.h>
 
 float mediaArr(int*, int);

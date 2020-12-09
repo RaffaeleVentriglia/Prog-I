@@ -1,3 +1,5 @@
+//calcolo del fattoriale (ricorsivo)
+
 #include <stdio.h>
 
 int fattoriale_ric(int);

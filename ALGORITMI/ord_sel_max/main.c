@@ -1,3 +1,5 @@
+//algoritmo di ordinamento per selezione di massimo
+
 #include <stdio.h>
 
 void scambiare(char *, char *);

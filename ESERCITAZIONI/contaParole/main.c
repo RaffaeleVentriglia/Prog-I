@@ -1,5 +1,8 @@
+    //conta le parole presenti in una stringa
+    
     #include <stdio.h>
     #define max 1000
+    
     int contaParole(char[]);
 
     int main() {

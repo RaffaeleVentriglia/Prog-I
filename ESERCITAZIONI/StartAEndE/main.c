@@ -1,3 +1,5 @@
+//conta le parole che iniziano con A e terminano in E
+
 #include <stdio.h>
 #include <string.h>
 

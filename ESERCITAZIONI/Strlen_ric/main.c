@@ -1,4 +1,4 @@
-//lunghezza di una stringa in maniera ricorsiva
+//lunghezza di una stringa (ricorsivo)
 
 #include <stdio.h>
 

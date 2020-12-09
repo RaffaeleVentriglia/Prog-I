@@ -1,3 +1,5 @@
+//conta parole con strtok
+
 #include <stdio.h>
 #include <string.h>
 

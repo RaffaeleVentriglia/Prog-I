@@ -1,3 +1,5 @@
+//algoritmo di Fibonacci (ricorsivo)
+
 #include <stdio.h>
 
 int fibonacci(int);

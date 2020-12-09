@@ -1,3 +1,5 @@
+//conta le parole che terminano in ARE
+
 #include <stdio.h>
 #include <string.h>
 

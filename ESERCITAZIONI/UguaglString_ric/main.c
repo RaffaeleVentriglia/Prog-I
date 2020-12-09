@@ -1,4 +1,4 @@
-//uguaglianza di due stringhe ricorsivo
+//uguaglianza di due stringhe (ricorsivo)
 
 #include <stdio.h>
 

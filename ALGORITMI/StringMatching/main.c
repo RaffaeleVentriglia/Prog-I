@@ -1,3 +1,5 @@
+//algoritmo di string matching
+
 #include <stdio.h>
 #include <string.h>
 

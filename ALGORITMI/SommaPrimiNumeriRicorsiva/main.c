@@ -1,3 +1,5 @@
+//somma i primi numeri naturali (ricorsivo)
+
 #include <stdio.h>
 
 int somma_ric(int);

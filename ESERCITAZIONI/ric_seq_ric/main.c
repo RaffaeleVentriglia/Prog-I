@@ -1,4 +1,4 @@
-//ricerca sequenziale sviluppata in maniera ricorsiva
+//ricerca sequenziale (ricorsivo)
 
 #include <stdio.h>
 

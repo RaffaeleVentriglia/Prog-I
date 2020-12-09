@@ -1,3 +1,7 @@
+//somma righe e colonne di un array bidimensionale
+//e inserisce i risultati all'interno di due array 
+//sc (somma colonne) e sr (somma righe)
+
 #include <stdio.h>
 
 void esercitazione(int [][3], size_t, size_t, int [], int []);

@@ -1,3 +1,5 @@
+//trovare max e min di una matrice
+
 #include <stdio.h>
 
 void funzione(int*, int, int, int*, int*);

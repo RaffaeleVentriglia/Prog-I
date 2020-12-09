@@ -1,3 +1,5 @@
+//algoritmo di fusione di due array
+
 #include <stdio.h>
 #define max 100
 void fusione(char [], int, char [], int, char []);

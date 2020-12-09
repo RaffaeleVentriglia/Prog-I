@@ -1,3 +1,5 @@
+//algoritmo di ordinamento per selezione di minimo
+
 #include <stdio.h>
 
 void ord_sel_min(char [], int);

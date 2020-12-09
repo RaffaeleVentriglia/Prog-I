@@ -1,3 +1,5 @@
+//esercitazioni con le struct
+
 #include <stdio.h>
 /*
 struct data{

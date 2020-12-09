@@ -1,4 +1,4 @@
-//contatore di numeri pari in un array
+//contatore di numeri pari in un array (ricorsivo)
 
 #include <stdio.h>
 

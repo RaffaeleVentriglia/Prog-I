@@ -1,3 +1,5 @@
+//conta le parole contenenti 5 vocali
+
 #include <stdio.h>
 #include <string.h>
 

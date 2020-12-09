@@ -1,3 +1,5 @@
+//algoritmo di ordinamento per inserimento sulle stringhe
+
 #include <stdio.h>
 #include <string.h>
 

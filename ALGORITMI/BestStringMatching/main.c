@@ -1,3 +1,5 @@
+//algoritmo di Best String Matching
+
 #include <stdio.h>
 #include <string.h>
 

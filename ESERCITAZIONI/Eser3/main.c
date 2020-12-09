@@ -41,8 +41,3 @@ int e_vocale(char car){
         return 0;
     }
 }
-
-/*
-  Tempo:
-  
-*/
