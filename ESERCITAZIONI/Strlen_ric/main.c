@@ -1,3 +1,5 @@
+//lunghezza di una stringa in maniera ricorsiva
+
 #include <stdio.h>
 
 int strlen_ric(char*);
