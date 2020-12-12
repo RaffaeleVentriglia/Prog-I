@@ -16,20 +16,17 @@ int main(){
     }
     printf("Inserire chiave: ");
     scanf("%d", &chiave);
-    stato = ric_seq(arr, chiave, size);
-    printf("Chiave trovata: %d\n", stato);
+    printf("Chiave trovata: %d\n", ric_seq(arr, chiave, size));
     return 0;
 }
 
 int ric_seq(int* arr, int chiave, int size){
     int i; 
-    int stato;
     for(i = 0; i < size; i++){
         if(chiave == arr[i]){
-            stato = 1;
+            return 1;
         } else {
-            stato = 0;
+            return 0;
         }
     }
-    return stato;
 }
