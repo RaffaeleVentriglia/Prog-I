@@ -8,7 +8,7 @@
 *    Implementare l’algoritmo per la simulazione del dizionario ed effettuare almeno un test
 *    per ognuna delle opzioni richieste dall’utente.
 ************************************************************************************************/
-
+ 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -22,14 +22,15 @@ typedef struct dizionario Dizionario;
 
 void inserimento(Dizionario[], int);
 void cerca(Dizionario[], int);
-void consonanti(Dizionario[], int);
+int Piuconsonanti(Dizionario[], int);
 int ricercaBinaria(char*, Dizionario[], int);
 int min_ind(Dizionario*, int);
 void scambiare(Dizionario*, Dizionario*);
 void ord_Sel_min(Dizionario*, int);
+int consonanti(char*);
 
 int main(){
-    int scelta = 0, cont = 0;
+    int scelta = 0, cont = 0, indMax;
     Dizionario elenco[max];
     while(scelta != 4){
         printf("Dizionario di lingua Italiana\n");
@@ -51,7 +52,8 @@ int main(){
             cerca(elenco,cont);
             break;
         case 3:
-            consonanti(elenco,cont);
+            indMax = Piuconsonanti(elenco,cont);
+            printf("La parola con più consonanti è: %s\n", elenco[indMax].parola);
             break;
         case 4:
             printf("USCITA DAL PROGRAMMA IN CORSO . . .\n");
@@ -63,7 +65,6 @@ int main(){
     }
     return 0;
 }
-
 
 //FUNZIONE PER L'INSERIMENTO DI UNA NUOVA PAROLA
 //ALL'INTERNO DEL DIZIONARIO
@@ -93,7 +94,6 @@ void inserimento(Dizionario elenco[], int cont){
     }
 }
 
-
 //FUNZIONE PER LA RICERCA DI UNA PAROLA
 //ALL'INTERNO DEL DIZIONARIO
 void cerca(Dizionario elenco[], int cont){
@@ -113,12 +113,18 @@ void cerca(Dizionario elenco[], int cont){
 
 //FUNZIONE PER LA RICERCA DELLA PAROLA
 //CHE CONTIENE PIU' CONSONANTI
-void consonanti(Dizionario elenco[], int cont){
+int Piuconsonanti(Dizionario elenco[], int cont){
+    int i, contatore = 0, contMax = 0, indMax = 0;
     printf("FUNZIONE DI RICERCA DELLA PAROLE CONTENENTE IL MAGGIOR NUMERO DI CONSONANTI . . .\n");
+    for(i = 0; i < cont; i++){
+        contatore = consonanti(elenco[i].parola);
+        if(contatore > contMax){
+            contMax = contatore;
+            indMax = i;
+        }
+    }
+    return indMax;
 }
-
-
-
 
 //FUNZIONI PER L'ORDINAMENTO PER SELEZIONE DI MINIMO
 int min_ind(Dizionario* elenco, int size){
@@ -140,14 +146,11 @@ void scambiare(Dizionario* a, Dizionario* b){
 
 void ord_Sel_min(Dizionario* elenco, int size){
     int i;
-    for(i = 0; i < size; i++){       
+    for(i = 0; i < size; i++){
         scambiare(&elenco[i], &elenco[min_ind(&elenco[i], size-i) + i]);
     }
 }
 //FINE FUNZIONI PER L'ORDINAMENTO
-
-
-
 
 //FUNZIONE PER LA RICERCA BINARIA RICORSIVA
 int ricercaBinaria(char* id, Dizionario elenco[], int n)
@@ -167,3 +170,18 @@ int ricercaBinaria(char* id, Dizionario elenco[], int n)
         return ricercaBinaria(id, elenco+mediano+1, n-mediano-1);
 }
 //FINE FUNZIONE DI RICERCA BINARIA RICORSIVA
+
+//INIZIO FUNZIONE DI RICERCA SEQUENZIALE
+int consonanti(char *prova){
+    int cont = 0, i;
+    char consonanti[] = {'b','c','d','f','g','h','j','k','l','m','n','p','q','r','s','t','v','w','x','y','z'};
+    
+    for(i = 0; prova[i] != '\0'; i++){   
+        for(int j = 0; j < 21; j++){
+            if(prova[i] == consonanti[j])
+                cont++;
+        }
+    }
+    return cont;
+}
+//FINE FUNZIONE DI RICERCA SEQUENZIALE
