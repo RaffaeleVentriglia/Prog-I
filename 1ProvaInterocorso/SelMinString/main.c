@@ -39,8 +39,8 @@ void scambiare(char** a, char** b){
 
 void ord_Sel_min(char** elenco, int size){
     int i;
-    for(i = 0; i < size-1; i++){       //size-1 perchè l'ultimo elemento è ordinato di per se
-        scambiare(&elenco[i], &elenco[min_ind(&elenco[i], size-i) + i]);   //size-i perchè devo passare il size intero, e non spiazzato
+    for(i = 0; i < size-1; i++){       
+        scambiare(&elenco[i], &elenco[min_ind(&elenco[i], size-i) + i]);
     }
 }
 

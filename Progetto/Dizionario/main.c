@@ -23,9 +23,13 @@ typedef struct dizionario Dizionario;
 void inserimento(Dizionario[], int);
 void cerca(Dizionario[], int);
 void consonanti(Dizionario[], int);
+int ricercaBinaria(char*, Dizionario[], int);
+int min_ind(Dizionario*, int);
+void scambiare(Dizionario*, Dizionario*);
+void ord_Sel_min(Dizionario*, int);
 
 int main(){
-    int scelta, cont;
+    int scelta = 0, cont = 0;
     Dizionario elenco[max];
     while(scelta != 4){
         printf("Dizionario di lingua Italiana\n");
@@ -60,6 +64,7 @@ int main(){
     return 0;
 }
 
+
 //FUNZIONE PER L'INSERIMENTO DI UNA NUOVA PAROLA
 //ALL'INTERNO DEL DIZIONARIO
 void inserimento(Dizionario elenco[], int cont){
@@ -75,23 +80,90 @@ void inserimento(Dizionario elenco[], int cont){
         printf("Operazione di allocazione dinamica non riuscita\n");
         exit(0);
     }
-    printf("FUNZIONE DI INSERIMENTO AVVIATA\n");
+    printf("FUNZIONE DI INSERIMENTO AVVIATA . . .\n");
     printf("Immettere la parola da inserire nel dizionario: ");
     fgets(elenco[cont].parola,30,stdin);
     elenco[cont].parola[strcspn(elenco[cont].parola,"\n")] = 0;
     printf("Inserire il suo significato: ");
     fgets(elenco[cont].definizione,150,stdin);
     elenco[cont].definizione[strcspn(elenco[cont].definizione,"\n")] = 0;
+    //funzione di ordinamento
+    if(cont > 0){
+        ord_Sel_min(elenco,cont);
+    }
 }
+
 
 //FUNZIONE PER LA RICERCA DI UNA PAROLA
 //ALL'INTERNO DEL DIZIONARIO
-void cerca(Dizionario prova[], int cont){
-    printf("FUNZIONE DI RICERCA AVVIATA\n");
+void cerca(Dizionario elenco[], int cont){
+    int ris;
+    char ricerca[30];
+    printf("FUNZIONE DI RICERCA AVVIATA . . .\n");
+    printf("Inserire la parola da ricercare: ");
+    fgets(ricerca,30,stdin);
+    ricerca[strcspn(ricerca,"\n")] = 0;
+    ris = ricercaBinaria(ricerca,elenco,cont);
+    if(ris >= 0){
+        printf("%s: %s\n", elenco[ris].parola, elenco[ris].definizione);
+    } else {
+        printf("Parola non trovata\n");
+    }
 }
 
 //FUNZIONE PER LA RICERCA DELLA PAROLA
 //CHE CONTIENE PIU' CONSONANTI
-void consonanti(Dizionario prova[], int cont){
-    printf("FUNZIONE DI RICERCA DELLA PAROLE CONTENENTE IL MAGGIOR NUMERO DI CONSONANTI\n");
+void consonanti(Dizionario elenco[], int cont){
+    printf("FUNZIONE DI RICERCA DELLA PAROLE CONTENENTE IL MAGGIOR NUMERO DI CONSONANTI . . .\n");
 }
+
+
+
+
+//FUNZIONI PER L'ORDINAMENTO PER SELEZIONE DI MINIMO
+int min_ind(Dizionario* elenco, int size){
+    int i;
+    int i_min = 0;   //variabile fondamentale da passare alla fine
+    for(i = 1; i <= size; i++){
+        if(strcmp(elenco[i].parola, elenco[i_min].parola) < 0){
+            i_min = i;    //operazione dominante
+        }
+    }
+    return i_min;
+}
+
+void scambiare(Dizionario* a, Dizionario* b){
+    Dizionario temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+void ord_Sel_min(Dizionario* elenco, int size){
+    int i;
+    for(i = 0; i < size; i++){       
+        scambiare(&elenco[i], &elenco[min_ind(&elenco[i], size-i) + i]);
+    }
+}
+//FINE FUNZIONI PER L'ORDINAMENTO
+
+
+
+
+//FUNZIONE PER LA RICERCA BINARIA RICORSIVA
+int ricercaBinaria(char* id, Dizionario elenco[], int n)
+{
+    int mediano;
+    if(n < 1)
+    {
+        return -1;
+    }
+    mediano = (n-1)/2;
+    if(strcmp(id, elenco[mediano].parola) == 0){
+        return mediano;
+    }
+    else if(strcmp(id, elenco[mediano].parola) < 0)
+        return ricercaBinaria(id, elenco, mediano);
+    else
+        return ricercaBinaria(id, elenco+mediano+1, n-mediano-1);
+}
+//FINE FUNZIONE DI RICERCA BINARIA RICORSIVA
