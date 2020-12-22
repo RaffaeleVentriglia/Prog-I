@@ -167,7 +167,7 @@ int ricercaBinaria(char* id, Dizionario elenco[], int n)
     else if(strcmp(id, elenco[mediano].parola) < 0)
         return ricercaBinaria(id, elenco, mediano);
     else
-        return ricercaBinaria(id, elenco+mediano+1, n-mediano-1);
+        return mediano + 1 + ricercaBinaria(id, elenco+mediano+1, n-mediano-1);
 }
 //FINE FUNZIONE DI RICERCA BINARIA RICORSIVA
 
