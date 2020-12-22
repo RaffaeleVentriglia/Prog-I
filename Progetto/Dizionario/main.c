@@ -71,12 +71,12 @@ int main(){
 void inserimento(Dizionario elenco[], int cont){
     //termine = malloc(30*sizeof(char));
     //significato = malloc(100*sizeof(char));
-    elenco[cont].parola = malloc(30*sizeof(char));
+    elenco[cont].parola = (char *)malloc(30*sizeof(char));
     if(elenco[cont].parola == NULL){
         printf("Operazione di allocazione dinamica non riuscita\n");
         exit(0);
     }
-    elenco[cont].definizione = malloc(150*sizeof(char));
+    elenco[cont].definizione = (char *)malloc(150*sizeof(char));
     if(elenco[cont].definizione == NULL){
         printf("Operazione di allocazione dinamica non riuscita\n");
         exit(0);
