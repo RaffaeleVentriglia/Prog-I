@@ -32,8 +32,13 @@ int consonanti(char*);
 int main(){
     int scelta = 0, cont = 0, indMax;
     Dizionario elenco[max];
+    printf("*********************************\n");
+    printf("*                               *\n");
+    printf("*        DIZIONARIO DI          *\n");
+    printf("*       LINGUA ITALIANA         *\n");
+    printf("*                               *\n");
+    printf("*********************************\n");
     while(scelta != 4){
-        printf("Dizionario di lingua Italiana\n");
         printf("Operazioni consentite:\n");
         printf("1. Inserimento di una parola\n");
         printf("2. Cercare una parola e il corrispettivo significato all'interno del dizionario\n");
