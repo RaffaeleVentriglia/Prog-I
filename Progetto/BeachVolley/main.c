@@ -65,19 +65,106 @@ void stampaCampo(char field[10][10]){
 //FUNZIONE PRINCIPALE DELLA SIMULAZIONE
 void simulazione(char field[10][10], char* player1, char* player2, int result){
     int battuta;
+    int row, column;
+    int probability;
     printf("SCELTA CASUALE DI CHI BATTE PER PRIMO\n");
     battuta = 1 + rand() % 2;
+    
+    //BATTE IL GIOCATORE 1
     if(battuta == 1){
-        printf("Batterà %s\n", player1);
-        beat1(&field[0], player1, player2);
-    } else {
-        printf("Batterà %s\n", player2);
-        beat2(&field[0], player1, player2);
+        printf("Il pallone viene battuto da %s\n", player1);
+        sleep(2);
+        //Controllo della probabilità
+        //per sapere dove finirà il pallone
+        probability = 1 + rand() % 100;
+        //caso in cui il pallone termini sulla rete
+        if(probability >= 0 && probability <= 10){
+            row = 4;
+            column = 0 + rand() % 9;
+            printf("Pallone terminato sulla rete, nella posizione [%d][%d]\n", row, column);
+            field[column][row] = 'O';
+            stampaCampo(&field[0]);
+            field[column][row] = '|';  //reset della posizione al valore iniziale
+            stampaCampo(&field[0]);
+            printf("Batterà %s\n", player2);
+        }
+        //caso in cui il pallone termini fuori
+        else if(probability >= 11 && probability <= 31){
+            printf("Pallone terminato fuori, batterà %s\n", player2);
+        }
+        //caso in cui il pallone cade nel campo
+        else {
+            row = (rand() % (max + 1 - 0)) + 0;
+            column = (rand() % (max +1 - 5)) + 5;
+            //printf("DEBUG --> row : [%d]\n", row);        --> DEBUG
+            //printf("DEBUG --> column: [%d]\n", column);   --> DEBUG
+            //  TO DO: controlla se il pallone si trova nel quadrato intorno
+            //         al giocatore avversario, se si allora batte dall'altro lato,
+            //         altrimenti è punto.
+
+            //reset della posizione al valore iniziale
+            if(field[row][column] == '*'){
+                field[row][column] = 'X';
+                stampaCampo(&field[0]);
+                field[row][column] = '*';
+            } else {
+                field[row][column] = 'X';
+                stampaCampo(&field[0]);
+                field[row][column] = ' ';
+            }
+            //stampaCampo(&field[0]);  -->  DEBUG
+        }
+    } 
+
+    //BATTE IL GIOCATORE 2
+    else {
+        printf("Il pallone viene battuto da %s\n", player2);
+        sleep(2);
+        //Controllo della probabilità
+        //per sapere dove finirà il pallone
+        probability = 1 + rand() % 100;
+        //caso in cui il pallone termini sulla rete
+        if(probability >= 0 && probability <= 10){
+            row = 4;
+            column = 0 + rand() % 9;
+            printf("Pallone terminato sulla rete, nella posizione [%d][%d]\n", row, column);
+            field[column][row] = 'O';
+            stampaCampo(&field[0]);
+            field[column][row] = '|';  //reset della posizione al valore iniziale
+            stampaCampo(&field[0]);
+            printf("Batterà %s\n", player1);
+        }
+        //caso in cui il pallone termini fuori
+        else if(probability >= 11 && probability <= 31){
+            printf("Pallone terminato fuori, batterà %s\n", player1);
+        }
+        //caso in cui il pallone cade nel campo
+        else {
+            row = (rand() % (3 + 1 - 0)) + 0;
+            column = (rand() % (max +1 - 0)) + 0;
+            //printf("DEBUG --> row : [%d]\n", row);       --> DEBUG
+            //printf("DEBUG --> column: [%d]\n", column);  --> DEBUG
+            //  TO DO: controlla se il pallone si trova nel quadrato intorno
+            //         al giocatore avversario, se si allora batte dall'altro lato,
+            //         altrimenti è punto.
+    
+            //reset della posizione al valore iniziale
+            if(field[column][row] == '*'){
+                field[column][row] = 'X';
+                stampaCampo(&field[0]);
+                field[column][row] = '*';
+            } else {
+                field[column][row] = 'X';
+                stampaCampo(&field[0]);
+                field[column][row] = ' ';
+            }
+            //stampaCampo(&field[0]);  -->  DEBUG
+        }
     }
 }
 
 
-
+/*
 //CASO IN CUI DOVESSE BATTERE IL GIOCATORE 1
 void beat1(char field[10][10], char* player1, char* player2){
     int row, column;
@@ -128,8 +215,6 @@ void beat1(char field[10][10], char* player1, char* player2){
     }
 }
 
-
-
 //CASO IN CUI DOVESSE BATTERE IL GIOCATORE 2
 void beat2(char field[10][10], char* player1, char* player2){
     int row, column;
@@ -179,3 +264,4 @@ void beat2(char field[10][10], char* player1, char* player2){
         stampaCampo(&field[0]);
     }
 }
+*/
