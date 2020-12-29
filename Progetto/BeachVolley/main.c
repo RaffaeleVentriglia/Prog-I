@@ -121,11 +121,8 @@ void simulazione(char field[10][10], char* player1, char* player2, int score1, i
         battuta2(&field[0], player1, player2, score1, score2);
     }
 }
- 
- 
- 
-//FUNZIONI PER LE BATTUTE
 
+//FUNZIONI PER LE BATTUTE
 void battuta1(char field[10][10], char* player1, char *player2, int score1, int score2){
     int row, column, probability;
     int PosPlayer1X, PosPlayer1Y;
@@ -136,7 +133,7 @@ void battuta1(char field[10][10], char* player1, char *player2, int score1, int 
 
     //DOVE FINISCE IL PALLONE
     probability = (rand() % (100 + 1 - 1)) + 1;
- 
+
     //RETE
     if(probability >= 0 && probability <= 10){
         row = 4;
@@ -156,7 +153,6 @@ void battuta1(char field[10][10], char* player1, char *player2, int score1, int 
             printf("HA VINTO %s\n", player2);
             exit(1);
         }
-
 
         printf("Batterà %s\n", player2);
         battuta2(&field[0], player1, player2, score1, score2);
