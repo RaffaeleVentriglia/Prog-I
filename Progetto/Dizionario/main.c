@@ -52,7 +52,7 @@ int main(){
         case 1:
             inserimento(elenco,cont);
             cont++;
-            break;
+            break;            
         case 2:
             cerca(elenco,cont);
             break;
@@ -74,8 +74,6 @@ int main(){
 //FUNZIONE PER L'INSERIMENTO DI UNA NUOVA PAROLA
 //ALL'INTERNO DEL DIZIONARIO
 void inserimento(Dizionario elenco[], int cont){
-    //termine = malloc(30*sizeof(char));
-    //significato = malloc(100*sizeof(char));
     elenco[cont].parola = (char *)malloc(30*sizeof(char));
     if(elenco[cont].parola == NULL){
         printf("Operazione di allocazione dinamica non riuscita\n");
