@@ -20,7 +20,7 @@ struct dizionario {
 };
 typedef struct dizionario Dizionario;
 
-void inserimento(Dizionario[], int);
+int inserimento(Dizionario[], int);
 void cerca(Dizionario[], int);
 int Piuconsonanti(Dizionario[], int);
 int ricercaBinaria(char*, Dizionario[], int);
@@ -51,20 +51,24 @@ int main(){
         {
         case 1:
             inserimento(elenco,cont);
+            printf("\n");
             cont++;
             break;            
         case 2:
             cerca(elenco,cont);
+            printf("\n");
             break;
         case 3:
             indMax = Piuconsonanti(elenco,cont);
             printf("La parola con più consonanti è: %s\n", elenco[indMax].parola);
+            printf("\n");
             break;
         case 4:
             printf("USCITA DAL PROGRAMMA IN CORSO . . .\n");
             break;
         default:
             printf("Operazione non consentita\n");
+            printf("\n");
             break;
         }
     }
@@ -73,16 +77,16 @@ int main(){
 
 //FUNZIONE PER L'INSERIMENTO DI UNA NUOVA PAROLA
 //ALL'INTERNO DEL DIZIONARIO
-void inserimento(Dizionario elenco[], int cont){
+int inserimento(Dizionario elenco[], int cont){
     elenco[cont].parola = (char *)malloc(30*sizeof(char));
     if(elenco[cont].parola == NULL){
         printf("Operazione di allocazione dinamica non riuscita\n");
-        exit(0);
+        return 0;
     }
     elenco[cont].definizione = (char *)malloc(150*sizeof(char));
     if(elenco[cont].definizione == NULL){
         printf("Operazione di allocazione dinamica non riuscita\n");
-        exit(0);
+        return 0;
     }
     printf("FUNZIONE DI INSERIMENTO AVVIATA . . .\n");
     printf("Immettere la parola da inserire nel dizionario: ");
