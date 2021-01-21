@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 void aoins(int [], int); //algoritmo di ordinamento per inserimento
 void swap(int *, int *); //algoritmo per lo swap di due variabili
@@ -8,13 +9,18 @@ int min_val_ind(int *, int, int *, int *); //algoritmo per la ricerca dell'eleme
 int max_val_ind(int *, int, int *, int *); //algoritmo per la ricerca dell'elemento massimo e il suo indice
 int arbin(int *, int, int); //algoritmo di ricerca binaria versione iterativa
 int arbinRic(int *, int, int); //algoritmo di ricerca binaria versione ricorsiva
-void fusione(int *, int, int *, int, int *); //algoritmo di fusione di due array ordinati
+void afus(int *, int, int *, int, int *); //algoritmo di fusione di due array ordinati
+int StringMatching(char [], char []); //algoritmo di string matching (conta occorrenze)
+int SommaRicorsiva(int [], int); //algoritmo di somma ricorsiva di un'array
 
 int main(){
-	int arr[] = {1,5,2,4,3}; //array composto da dati di tipo intero
+	int arr[] = {1,5,2,4,3};
 	int list[] = {2,4,6,8,10};
 	int a[] = {1,3,5,7,9};
 	int b[] = {2,4,6,8,10};
+	char key[] = "prova";
+	char text[] = "questa è una prova di una prova di una prova che bho";
+	int var;
 	int c[10];
 	int chiave = 6;
 	int i;
@@ -32,11 +38,15 @@ int main(){
 	else{
 		printf("Chiave non trovata\n");
 	}
-	fusione(a,size,b,size,c);
+	afus(a,size,b,size,c);
 	for(i = 0; i < 10; i++){ //for che scorre tutto l'array
 		printf("%d\t",c[i]); //stampa gli elementi
 	}
 	printf("\n");
+	var = StringMatching(key,text);
+	printf("Occorrenze trovate: %d\n", var);
+	var = SommaRicorsiva(arr,size);
+	printf("Somma degli elementi: %d\n", var);
 	return 0;
 }
 
@@ -141,7 +151,7 @@ int arbinRic(int *arr, int size, int chiave){
 		return arbinRic(arr + mediano + 1, size - mediano - 1, chiave);
 }
 
-void fusione(int *a, int n_a, int *b, int n_b, int *c){
+void afus(int *a, int n_a, int *b, int n_b, int *c){
 	int i_a = 0, i_b = 0, i_c = 0; //puntatori agli indici dei tre array
 	while(i_a < n_a && i_b < n_b){ //finchè nessuno dei dure array non è finito
 		if(a[i_a] < b[i_b]){ //controlla quale degli elementi è più piccolo
@@ -155,5 +165,26 @@ void fusione(int *a, int n_a, int *b, int n_b, int *c){
 	}
 	while(i_b < n_b){ //controlla se gli elementi di B sono terminati
 		c[i_c++] = b[i_b++]; //altrimenti li inserisce all'interno dell'array C
+	}
+}
+
+int StringMatching(char chiave[], char testo[]){
+	int i, n, m, cont = 0;
+	n = strlen(chiave); //lunghezza della chiave
+	m = strlen(testo); //lunghezza del testo
+	for(i = 0; i < m-n; i++){ //for che scorre tutto il testo
+		if(strncmp(chiave, &testo[i], n) == 0){ //se le due sottostringhe sono uguali
+			cont++; //incrementa il contatore delle sottostringhe uguali contate
+		}
+	}
+	return cont; //ritorna il numero delle occorrenze
+}
+
+int SommaRicorsiva(int arr[], int n){
+	if(n == 1){ //caso banale in cui c'è un singolo elemento
+		return arr[0];
+	} else { //altrimenti ritorna l'elemento n-1 più l'elemento ad n-1 per ogni volta
+			 //in cui viene fatta la riattivazione
+		return arr[n-1] + SommaRicorsiva(arr, n-1);
 	}
 }
