@@ -11,7 +11,8 @@ int arbin(int *, int, int); //algoritmo di ricerca binaria versione iterativa
 int arbinRic(int *, int, int); //algoritmo di ricerca binaria versione ricorsiva
 void afus(int *, int, int *, int, int *); //algoritmo di fusione di due array ordinati
 int StringMatching(char [], char []); //algoritmo di string matching (conta occorrenze)
-int SommaRicorsiva(int [], int); //algoritmo di somma ricorsiva di un'array
+int SommaRicorsiva(int [], int); //algoritmo di somma ricorsiva di un'array (approccio incrementale)
+int SommaRicorsivaDI(int [], int); //algoritmo di somma ricorsiva di un'array (approccio Divide Et Impera)
 
 int main(){
 	int arr[] = {1,5,2,4,3};
@@ -46,6 +47,8 @@ int main(){
 	var = StringMatching(key,text);
 	printf("Occorrenze trovate: %d\n", var);
 	var = SommaRicorsiva(arr,size);
+	printf("Somma degli elementi: %d\n", var);
+	var = SommaRicorsivaDI(arr,size);
 	printf("Somma degli elementi: %d\n", var);
 	return 0;
 }
@@ -183,8 +186,18 @@ int StringMatching(char chiave[], char testo[]){
 int SommaRicorsiva(int arr[], int n){
 	if(n == 1){ //caso banale in cui c'è un singolo elemento
 		return arr[0];
-	} else { //altrimenti ritorna l'elemento n-1 più l'elemento ad n-1 per ogni volta
+	} else { //altrimenti ritorna l'elemento n-1 più l'elemento ad n-autoattivazione per ogni volta
 			 //in cui viene fatta la riattivazione
-		return arr[n-1] + SommaRicorsiva(arr, n-1);
+		return arr[n - 1] + SommaRicorsiva(arr, n-1);
+	}
+}
+
+int SommaRicorsivaDI(int arr[], int size){
+	int mediano;
+	if(size == 1){
+		return arr[0];
+	} else {
+		mediano = (size - 1) / 2;
+		return SommaRicorsivaDI(arr, mediano + 1) + SommaRicorsivaDI(arr + mediano + 1, size - mediano - 1);
 	}
 }

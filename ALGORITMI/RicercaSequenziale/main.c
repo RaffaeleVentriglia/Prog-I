@@ -1,10 +1,6 @@
 //algoritmo di ricerca sequenziale
 
-#include <stdio.h>
-#define false 0
-#define true 1
-
-int appartiene(int [], int, int);
+#include "function.h";
 
 int main(){
     int n = 0, i, stato;
@@ -24,19 +20,6 @@ int main(){
     } else
         printf("La chiave è stata trovata all'interno dell'array\n");
     return 0;
-}
-
-int appartiene(int arr[], int chiave, int n){
-    int stato = false;
-    int i = 0;
-    while(chiave != arr[i] && i < n-1){
-        i++;
-        if(chiave == arr[i])
-            stato = true;
-        else
-            stato = false;
-    }
-    return stato;
 }
 
 /*               COMPLESSITÀ DI TEMPO E SPAZIO
