@@ -35,7 +35,6 @@ int migliore(char *testo, char *chiave){
 /*                COMPLESSITÀ DI TEMPO E SPAZIO
  *      
  *    n*(m - n + 1) confronti al più tra i caratteri delle due stringhe
- *
 */
 
 int punteggio(char *a, char *b, int n){
